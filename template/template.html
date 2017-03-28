@@ -1,0 +1,52 @@
+<div class="panel-group" id="accordion">
+  
+  <div class="panel panel-default" ng-if="card.type=='image'">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{card.id}}"><span class="glyphicon glyphicon-picture"></span> {{card.name}}</a> 
+        <span class="delete-icon"><i ng-click="removeItem($event)" class="glyphicon glyphicon-trash"></i></span>
+      </h4>
+    </div>
+    <div id="{{card.id}}" class="panel-collapse collapse">
+      <div class="card">
+        <div class="delete-icon"><button class="btn btn-sm " ng-click="togglePin(card.id)"><i class="glyphicon glyphicon-pushpin"></i> Pin</button> {{card.timestamp|date:"yyyy.MM.dd h.mm'h'"}}</div>
+        <img ng-src="{{ card.href }}" alt="{{ card.name }}" /><br/>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default" ng-if="card.type=='link'">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{card.id}}"><span class="glyphicon glyphicon-link"> </span> {{card.description}}</a>
+        <span class="delete-icon"><i ng-click="removeItem($event)" class="glyphicon glyphicon-trash"></i></span>
+      </h4>
+    </div>
+    <div id="{{card.id}}" class="panel-collapse collapse">
+      <div class="card">
+        <div class="delete-icon"><button class="btn btn-sm" ng-click="togglePin(card.id)"><i class="glyphicon glyphicon-pushpin"></i> Pin</button> {{card.timestamp|date:"yyyy.MM.dd h.mm'h'"}}</div>
+        <div>
+          <br/>{{ card.description }}</div><a ng-href="{{card.href }}">{{ card.title }}</a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default" ng-if="card.type=='text'">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{card.id}}"><span class="glyphicon glyphicon-text-background"> </span> Simple Text</a>
+        <span class="delete-icon"><span><i></i><i></i></span><i ng-click="removeItem($event)" class="glyphicon glyphicon-trash"></i></span>
+      </h4>
+    </div>
+    <div id="{{card.id}}" class="panel-collapse collapse">
+      <div class="card">
+        <div class="delete-icon"> <button class="btn btn-sm" ng-click="togglePin(card.id)"><i class="glyphicon glyphicon-pushpin"></i> Pin</button> {{card.timestamp|date:"yyyy.MM.dd h.mm'h'"}}</div>
+        <div>
+          <br/>{{card.body}}</div>
+      </div>
+    </div>
+  </div>
+  
+</div>
